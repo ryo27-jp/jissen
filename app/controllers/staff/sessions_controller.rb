@@ -15,13 +15,15 @@ class Staff::SessionsController < Staff::Base
                       StaffMember.find_by("LOWER(email)= ?", @form.email.downcase)
     end
     # authenticate.rbで定義されたメソッドでフォームから送られてきたパラメーターが登録されたデーターと一致するかを確認する。
+    if Admin::Authenticator.new(staff_member).authenticate(@form.password)
     if staff_member.suspended?
       flash.now.alert = "アカウントが停止されています。"
       render action: "new"
-    elsif
+    else
       session[:staff_member_id] = staff_member.id
       flash.notice = "ログインしました。"
       redirect_to :staff_root
+    end
     else
       flash.now.alert = "メールアドレスが正しくありません。"
       render action: "new"
