@@ -2,6 +2,7 @@ class Staff::Base < ApplicationController
   before_action :authorize
   before_action :check_account
   before_action :check_timeout
+  
   private 
     def current_staff_member
       if session[:staff_member_id]
@@ -32,7 +33,7 @@ class Staff::Base < ApplicationController
           session[:last_access_time] = Time.current
         else
           session.delete(:staff_member_id)
-          flash/alert = "セッションがタイムアウトしました。"
+          flash.alert = "セッションがタイムアウトしました。"
           redirect_to :staff_login
         end
       end

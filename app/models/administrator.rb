@@ -6,4 +6,9 @@ class Administrator < ApplicationRecord
       self.hashed_password = nil
     end
   end
+
+  # アカウントが有効なものかを確認している
+  def active?
+    !suspended?
+  end
 end
