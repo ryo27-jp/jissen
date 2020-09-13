@@ -14,8 +14,13 @@ Rails.application.routes.draw do
       root "top#index"
       get "login" => "sessions#new", as: :login
       resource :session, only:[:create, :destroy ]
-      resources :staff_members
-    end
+      resources :staff_members do
+        # admin_staff_member_staff_events GET    /admin/staff_members/:staff_member_id/staff_events(.:format) 
+        resources :staff_events, only: [:index]
+      end
+      # admin_staff_events GET    /admin/staff_events(.:format)   
+    resources :staff_events, only:[:index]
+   end
   end
   constraints host: config[:customer][:host] do
     namespace :customer, path: config[:customer][:path] do

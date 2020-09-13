@@ -27,10 +27,13 @@
         <td class = "date"><%= m.end_date.try(:strftime, "%Y/%m/%d") %></td>
         <td class = "boolean"><%= m.suspended? ? raw("&#x2611;") : raw("&#x2610") %></td>
         <td class = "actions"><%= link_to "編集", [:edit,:admin, m] %> | 
+        <%= link_to "Events", [:admin, m, :staff_events] %> | 
         <%= link_to "削除", [:admin, m], method: :delete,　date: {confirm: "本当に削除しますか？"} %> </td>
       </tr>
     <% end %>
   </table>
+
+  <%= paginate @staff_members %>
   <div class = "links">
     <%= link_to "新規登録", :new_admin_staff_member %>
   </div>

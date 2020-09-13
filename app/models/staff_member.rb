@@ -1,4 +1,6 @@
 class StaffMember < ApplicationRecord
+
+  has_many :events, class_name: "StaffEvent", dependent: :destroy
   # hashed_passwordに属性値をセット
   def password=(raw_password)
     if raw_password.kind_of?(String)
