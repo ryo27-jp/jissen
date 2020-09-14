@@ -64,5 +64,15 @@ RSpec.describe StaffMember, type: :model do
       member2 = build(:staff_member, email: member1.email)
       expect(member2).not_to be_valid
     end
+
+    example "数字を含むfamily_nameは無効" do
+      member = build(:staff_member, family_name: "山田1")
+      expect(member).not_to be_valid
+    end
+
+    example "記号を含むfamily_nameは無効" do
+      member = build(:staff_member, family_name: "山田-!")
+      expect(member).not_to be_valid
+    end
   end
 end
