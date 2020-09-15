@@ -37,20 +37,22 @@ div#wrapper {
             display: inline-block;
           }
         }
-        input[type="checkbox"] + label {
-          display: inline-block;
-        }
         div.buttons {
           text-align: center;
           input[type="submit"] {
             padding: $wide $wide * 2;
           }
         }
-        div.field_with_errors{
+        div.field_with_errors {
           display: inline;
           padding: 0;
-          label { color: $red; }  
-          input { background-color: $pink; }
+          label { color: $red; }
+          input { background: $pink; }
+        }
+        div.error-message {
+          color: $red;
+          font-size: $small;
+          padding: 0 $very_wide;
         }
       }
     }
