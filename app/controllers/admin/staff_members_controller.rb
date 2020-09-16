@@ -15,6 +15,10 @@ class Admin::StaffMembersController < Admin::Base
 
   def create
     @staff_member = StaffMember.new(staff_member_params)
+#     (byebug) @staff_member
+# #<StaffMember id: nil, email: "test@example.com", family_name: "テスト", given_name: "太郎", family_name_kana: "テスト", given_name_kana: "タロウ", hashed_password: [FILTERED], start_date: "2020-09-16", end_date: nil, suspended: false, created_at: nil, updated_at: nil>
+# (byebug) staff_member_params
+# <ActionController::Parameters {"email"=>"test@example.com", "password"=>"password", "family_name"=>"テスト", "given_name"=>"太郎", "family_name_kana"=>"テスト", "given_name_kana"=>"タロウ", "start_date"=>"2020-09-16", "end_date"=>"", "suspended"=>"0"} permitted: true>
     if @staff_member.save
       flash.notice = "職員アカウントを新規登録しました。"
       redirect_to :admin_staff_members
