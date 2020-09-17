@@ -11,7 +11,7 @@ class CustomerPresenter < ModelPresenter
 
   def birthday
     return "" if object.birthday.blank?
-      object.birthday.strftime("%Y%m/%d")
+    object.birthday.strftime("%Y/%m/%d")
   end
 
   def gender
@@ -23,5 +23,9 @@ class CustomerPresenter < ModelPresenter
     else
       ""
     end
+  end
+
+  def personal_phones
+    object.personal_phones.map(&:number)
   end
 end
